@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerDrawHub", "ServerDrawHub\ServerDrawHub.csproj", "{4D163D44-6C96-49CF-B6E2-FBB593A7781D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D163D44-6C96-49CF-B6E2-FBB593A7781D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D163D44-6C96-49CF-B6E2-FBB593A7781D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D163D44-6C96-49CF-B6E2-FBB593A7781D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D163D44-6C96-49CF-B6E2-FBB593A7781D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {13628C4E-B802-4655-B08E-1B7BE01B9F47}
+	EndGlobalSection
+EndGlobal

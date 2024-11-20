@@ -1,0 +1,57 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Document\\WinformC#\\MangCanBan\\Server-Online-collaborative-drawing-application\\ServerDrawHub\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4D163D44-6C96-49CF-B6E2-FBB593A7781D}|ServerDrawHub\\ServerDrawHub.csproj|D:\\Document\\WinformC#\\MangCanBan\\Server-Online-collaborative-drawing-application\\ServerDrawHub\\serverdrawhub\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4D163D44-6C96-49CF-B6E2-FBB593A7781D}|ServerDrawHub\\ServerDrawHub.csproj|solutionrelative:serverdrawhub\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D163D44-6C96-49CF-B6E2-FBB593A7781D}|ServerDrawHub\\ServerDrawHub.csproj|d:\\document\\winformc#\\mangcanban\\server-online-collaborative-drawing-application\\serverdrawhub\\serverdrawhub\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D163D44-6C96-49CF-B6E2-FBB593A7781D}|ServerDrawHub\\ServerDrawHub.csproj|solutionrelative:serverdrawhub\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Server.cs",
+              "DocumentMoniker": "D:\\Document\\WinformC#\\MangCanBan\\Server-Online-collaborative-drawing-application\\ServerDrawHub\\ServerDrawHub\\Server.cs",
+              "RelativeDocumentMoniker": "ServerDrawHub\\Server.cs",
+              "ToolTip": "D:\\Document\\WinformC#\\MangCanBan\\Server-Online-collaborative-drawing-application\\ServerDrawHub\\ServerDrawHub\\Server.cs",
+              "RelativeToolTip": "ServerDrawHub\\Server.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAYwHUAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-13T14:59:39.286Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Server.cs [Design]",
+              "DocumentMoniker": "D:\\Document\\WinformC#\\MangCanBan\\Server-Online-collaborative-drawing-application\\ServerDrawHub\\ServerDrawHub\\Server.cs",
+              "RelativeDocumentMoniker": "ServerDrawHub\\Server.cs",
+              "ToolTip": "D:\\Document\\WinformC#\\MangCanBan\\Server-Online-collaborative-drawing-application\\ServerDrawHub\\ServerDrawHub\\Server.cs [Design]",
+              "RelativeToolTip": "ServerDrawHub\\Server.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-13T14:28:52.035Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+D:\Document\WinformC#\MangCanBan\Server-Online-collaborative-drawing-application\ServerDrawHub\ServerDrawHub\bin\Debug\ServerDrawHub.exe.config
+D:\Document\WinformC#\MangCanBan\Server-Online-collaborative-drawing-application\ServerDrawHub\ServerDrawHub\bin\Debug\ServerDrawHub.exe
+D:\Document\WinformC#\MangCanBan\Server-Online-collaborative-drawing-application\ServerDrawHub\ServerDrawHub\bin\Debug\ServerDrawHub.pdb
+D:\Document\WinformC#\MangCanBan\Server-Online-collaborative-drawing-application\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.csproj.AssemblyReference.cache
+D:\Document\WinformC#\MangCanBan\Server-Online-collaborative-drawing-application\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.Properties.Resources.resources
+D:\Document\WinformC#\MangCanBan\Server-Online-collaborative-drawing-application\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.csproj.GenerateResource.cache
+D:\Document\WinformC#\MangCanBan\Server-Online-collaborative-drawing-application\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.csproj.CoreCompileInputs.cache
+D:\Document\WinformC#\MangCanBan\Server-Online-collaborative-drawing-application\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.exe
+D:\Document\WinformC#\MangCanBan\Server-Online-collaborative-drawing-application\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.pdb
+D:\Document\WinformC#\MangCanBan\Server-Online-collaborative-drawing-application\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.Server.resources
