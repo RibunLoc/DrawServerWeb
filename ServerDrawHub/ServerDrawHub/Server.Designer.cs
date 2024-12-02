@@ -58,7 +58,7 @@
             this.Name_port.Location = new System.Drawing.Point(26, 59);
             this.Name_port.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Name_port.Name = "Name_port";
-            this.Name_port.Size = new System.Drawing.Size(71, 37);
+            this.Name_port.Size = new System.Drawing.Size(50, 25);
             this.Name_port.TabIndex = 1;
             this.Name_port.Text = "Port:";
             // 
@@ -70,7 +70,7 @@
             this.tb_input_port.Location = new System.Drawing.Point(5, 15);
             this.tb_input_port.Margin = new System.Windows.Forms.Padding(4);
             this.tb_input_port.Name = "tb_input_port";
-            this.tb_input_port.Size = new System.Drawing.Size(484, 35);
+            this.tb_input_port.Size = new System.Drawing.Size(484, 25);
             this.tb_input_port.TabIndex = 2;
             // 
             // panel1
@@ -106,7 +106,7 @@
             // 
             // Server
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1412, 909);
             this.Controls.Add(this.panel_draw);

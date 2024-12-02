@@ -8,3 +8,14 @@ D:\Document\WinformC#\MangCanBan\Server-Online-collaborative-drawing-application
 D:\Document\WinformC#\MangCanBan\Server-Online-collaborative-drawing-application\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.exe
 D:\Document\WinformC#\MangCanBan\Server-Online-collaborative-drawing-application\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.pdb
 D:\Document\WinformC#\MangCanBan\Server-Online-collaborative-drawing-application\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.Server.resources
+C:\Users\ASUS\Documents\DrawServerWeb\ServerDrawHub\ServerDrawHub\bin\Debug\ServerDrawHub.exe.config
+C:\Users\ASUS\Documents\DrawServerWeb\ServerDrawHub\ServerDrawHub\bin\Debug\ServerDrawHub.exe
+C:\Users\ASUS\Documents\DrawServerWeb\ServerDrawHub\ServerDrawHub\bin\Debug\ServerDrawHub.pdb
+C:\Users\ASUS\Documents\DrawServerWeb\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.csproj.AssemblyReference.cache
+C:\Users\ASUS\Documents\DrawServerWeb\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.csproj.SuggestedBindingRedirects.cache
+C:\Users\ASUS\Documents\DrawServerWeb\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.Properties.Resources.resources
+C:\Users\ASUS\Documents\DrawServerWeb\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.Server.resources
+C:\Users\ASUS\Documents\DrawServerWeb\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.csproj.GenerateResource.cache
+C:\Users\ASUS\Documents\DrawServerWeb\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\Documents\DrawServerWeb\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.exe
+C:\Users\ASUS\Documents\DrawServerWeb\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.pdb

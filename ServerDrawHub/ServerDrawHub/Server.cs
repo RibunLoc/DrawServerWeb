@@ -19,6 +19,7 @@ namespace ServerDrawHub
         private bool isRun = true;
         private List<(Point start, Point end)> lines = new List<(Point, Point)>(); // tạo danh sách lưu trữ đường vẽ
         private Queue<(Point start, Point end)> drawQueue = new Queue<(Point, Point)>();
+        private BufferedGraphics bufferedGraphics;
         private bool isRunning = false;
 
         public Server()
@@ -29,6 +30,8 @@ namespace ServerDrawHub
 
         private void Server_Load(object sender, EventArgs e)
         {
+            BufferedGraphicsContext NoiDungHienTai = BufferedGraphicsManager.Current;
+            bufferedGraphics = NoiDungHienTai.Allocate(panel_draw.CreateGraphics(), panel_draw.ClientRectangle);
             Task.Run(() => {
                 ProcessDrawQueue();
                 });
@@ -75,7 +78,8 @@ namespace ServerDrawHub
         {
             try
             {
-                while (!isRun)
+                isRunning = true;
+                while (true)
                 {
                     TcpClient client = await server.AcceptTcpClientAsync();
                     ProcessClient(client);
@@ -117,6 +121,7 @@ namespace ServerDrawHub
                             int.Parse(parts[3]) * panel_draw.Height / int.Parse(parts[5])
                             );
 
+                        DrawLineOnServer(start, end);
                         lock (drawQueue)
                         {
                             drawQueue.Enqueue((start, end));
@@ -136,24 +141,29 @@ namespace ServerDrawHub
 
         private void panel_draw_Paint(object sender, PaintEventArgs e)
         {
+            //lines.Add((start, end));
             using (Pen pen = new Pen(BackColor, 2))
             {
                 foreach (var line in lines)
                 {
-                    e.Graphics.DrawLine(pen, line.start, line.end);
+                    bufferedGraphics.Graphics.DrawLine(pen, line.start, line.end);
                 }
 
             }
+
+            bufferedGraphics.Render(e.Graphics);
         }
 
         private void DrawLineOnServer(Point start, Point end)
         {
             lines.Add((start, end));
-
+/*
             using (Graphics g = this.panel_draw.CreateGraphics())
-            {
-                g.DrawLine(Pens.Black, start, end);
-            }
+            {*/
+                bufferedGraphics.Graphics.DrawLine(Pens.Black, start, end);
+
+            panel_draw.Invalidate();
+            /* }*/
         }
 
 
@@ -177,6 +187,7 @@ namespace ServerDrawHub
             }
             else
             {
+                isRunning = true;
                 isRun = true;
                 button1.Text =  "Listen";
                 button1.BackColor = SystemColors.ActiveBorder;
