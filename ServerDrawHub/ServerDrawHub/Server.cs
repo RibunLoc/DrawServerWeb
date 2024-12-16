@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.Json;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ServerDrawHub
@@ -16,6 +19,19 @@ namespace ServerDrawHub
         private bool isRunning;
         private List<Socket> connectedClients = new List<Socket>(); // List of connected clients
         private Socket serverSocket;
+        private Dictionary<string, Socket[]> clientRoomMapping = new Dictionary<string, Socket[]>();
+        private string roomid;
+
+        public class DrawData
+        {
+            public int StartX { get; set; }
+            public int StartY { get; set; }
+            public int EndX { get; set; }
+            public int EndY { get; set; }
+            public int Width { get; set; }
+            public int Height { get; set; }
+            public string RoomId { get; set; }
+        }
 
         public Server()
         {
@@ -95,11 +111,6 @@ namespace ServerDrawHub
             {
                 Socket clientSocket = await serverSocket.AcceptAsync();
 
-                if (!connectedClients.Contains(clientSocket))
-                {
-                    connectedClients.Add(clientSocket);
-                }
-
                 // Handle the client in a new task
                 Task clientTask = HandleClientAsync(clientSocket);
                 clientTasks.Add(clientTask);
@@ -111,11 +122,13 @@ namespace ServerDrawHub
 
         private async Task HandleClientAsync(Socket clientSocket)
         {
+            /*TaskCompletionSource<string> roomIdTaskSource = new TaskCompletionSource<string>();*/
             try
             {
                 IPEndPoint remoteEndPoint = (IPEndPoint)clientSocket.RemoteEndPoint;
                 string clientIpAddress = remoteEndPoint.Address.ToString();
                 int clientPort = remoteEndPoint.Port;
+                StringBuilder messageBuilder = new StringBuilder();
 
                 richTextBox1.AppendText($"Connected from {clientIpAddress}:{clientPort}{Environment.NewLine}");
 
@@ -123,6 +136,7 @@ namespace ServerDrawHub
 
                 while (true)
                 {
+                    // Read data from the client
                     int bytesReceived = await clientSocket.ReceiveAsync(new ArraySegment<byte>(buffer), SocketFlags.None);
 
                     if (bytesReceived == 0) // Client disconnected
@@ -131,10 +145,78 @@ namespace ServerDrawHub
                         break;
                     }
 
-                    string message = Encoding.ASCII.GetString(buffer, 0, bytesReceived);
-                    richTextBox1.AppendText($"{clientIpAddress}:{clientPort} {message}{Environment.NewLine}");
+                    // Append received data to the buffer
+                    string receivedData = Encoding.UTF8.GetString(buffer, 0, bytesReceived);
+                    messageBuilder.Append(receivedData);
 
-                    await BroadcastMessageAsync(message);
+                    // Split messages using the newline delimiter
+                    string[] messages = messageBuilder.ToString().Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+                    
+
+                    // Process each complete message
+                    for (int i = 0; i < messages.Length; i++)
+                    {
+                        string message = messages[i];
+
+                        if (message.Contains("roomid"))
+                        {
+                            // Handle room ID messages
+                            roomid = message.Split(':')[1];
+                            messageBuilder.Clear();
+                            MapClientToRoom(clientSocket, roomid);
+                            continue;
+                        }
+
+                        string[] parts = message.Split(',');
+                        if (i == messages.Length - 1 && parts.Length < 7)
+                        {
+                            // Keep incomplete JSON in the buffer
+                            messageBuilder.Clear();
+                            messageBuilder.Append(message);
+                        }
+                        else
+                        {
+                            try
+                            {
+                                
+
+                                // Deserialize the JSON message into a DrawData object
+                                //DrawData drawData = System.Text.Json.JsonSerializer.Deserialize<DrawData>(message);
+
+                                // Process the DrawData and broadcast it
+                                roomid = parts[6];
+                                int index = message.LastIndexOf(parts[6]);
+                                message = message.Substring(0,index);
+
+                                messageBuilder.Append(message);
+                                richTextBox1.AppendText($"{clientIpAddress}:{clientPort} {messageBuilder}{Environment.NewLine}");
+
+                                if (messageBuilder.Length > 500 || i == messages.Length - 1) // You can adjust the size threshold
+                                {
+                                    // Send the accumulated messages in one go
+                                    await BroadcastMessageAsync(messageBuilder.ToString(), roomid, clientSocket);
+                                    messageBuilder.Clear(); // Clear the buffer after sending
+                                }
+                                //await BroadcastMessageAsync(message, roomid, clientSocket);
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine($"Failed to process message: {ex.Message}");
+                            }
+                        }
+                            
+                    }
+
+                    // Retain incomplete messages in the buffer
+                    /*if (!messageBuilder.ToString().EndsWith("\n"))
+                    {
+                        messageBuilder.Clear();
+                    }
+                    else
+                    {
+                        messageBuilder.Clear();
+                    }*/
                 }
             }
             catch (Exception ex)
@@ -148,89 +230,41 @@ namespace ServerDrawHub
             }
         }
 
-
-        /*private async void ListenForClients()
+        private void MapClientToRoom(Socket clientSocket, string roomId)
         {
-            try
+            // This method maps the client to the roomId (or any logic for client-room mapping)
+            if (clientRoomMapping.ContainsKey(roomId))
             {
-                while (isRunning)
-                {
-                    TcpClient client = await server.AcceptTcpClientAsync();
-                    Socket clientSocket = client.Client;
-
-                    lock (connectedClients)
-                    {
-                        connectedClients.Add(clientSocket);
-                    }
-
-                    Task.Run(() => ProcessClient(clientSocket));
-                }
+                var currentClients = clientRoomMapping[roomId].ToList();
+                currentClients.Add(clientSocket);
+                clientRoomMapping[roomId] = currentClients.ToArray();
             }
-            catch (Exception ex) when (ex is ObjectDisposedException || ex is SocketException)
+            else
             {
-                // Handle server shutdown or other socket errors gracefully
+                clientRoomMapping[roomId] = new Socket[] { clientSocket };
             }
         }
 
-        private async void ProcessClient(Socket clientSocket)
+        private async Task BroadcastMessageAsync(string message, string roomid, Socket clientSocket)
         {
-            try
-            {
-                byte[] buffer = new byte[1024];
-
-                while (isRunning && clientSocket.Connected)
-                {
-                    int bytesRead = await clientSocket.ReceiveAsync(new ArraySegment<byte>(buffer), SocketFlags.None);
-
-                    if (bytesRead > 0)
-                    {
-                        string data = Encoding.ASCII.GetString(buffer, 0, bytesRead);
-                        BroadcastMessageAsync(data);
-
-                        Invoke((Action)(() =>
-                        {
-                            // Optionally update the server UI with the received message
-                            richTextBox1.AppendText($"Received: {data}{Environment.NewLine}");
-                        }));
-                    }
-                    else
-                    {
-                        break; // Client disconnected
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Invoke((Action)(() =>
-                {
-                    richTextBox1.AppendText($"Error: {ex.Message}{Environment.NewLine}");
-                }));
-            }
-            finally
-            {
-                lock (connectedClients)
-                {
-                    connectedClients.Remove(clientSocket);
-                }
-
-                clientSocket.Close();
-            }
-        }*/
-
-        private async Task BroadcastMessageAsync(string message)
-        {
-            byte[] data = Encoding.ASCII.GetBytes(message);
+            //byte[] data = Encoding.ASCII.GetBytes(message);
 
             // Use a snapshot of connected clients to avoid modifying the list during iteration
+           // string jsonMessage = System.Text.Json.JsonSerializer.Serialize(message) + "\n";
+            byte[] data = Encoding.UTF8.GetBytes(message);
             List<Socket> clientsSnapshot;
 
-            lock (connectedClients)
+            lock (clientRoomMapping[roomid])
             {
-                clientsSnapshot = new List<Socket>(connectedClients);
+                clientsSnapshot = new List<Socket>(clientRoomMapping[roomid]);
             }
 
             foreach (Socket client in clientsSnapshot)
             {
+                if (client == clientSocket)
+                {
+                    continue;
+                }
                 try
                 {
                     await client.SendAsync(new ArraySegment<byte>(data), SocketFlags.None);
