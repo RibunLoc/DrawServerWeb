@@ -1,6 +1,6 @@
 ﻿namespace ServerDrawHub
 {
-    partial class Server
+    partial class QuanLyServer
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel_draw = new System.Windows.Forms.Panel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.rtb_content = new System.Windows.Forms.RichTextBox();
+            this.btn_stop = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel_draw.SuspendLayout();
@@ -44,12 +45,12 @@
             // 
             this.button1.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(1064, 44);
+            this.button1.Location = new System.Drawing.Point(832, 40);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(176, 56);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Listen";
+            this.button1.Text = "Start";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -60,7 +61,7 @@
             this.Name_port.Location = new System.Drawing.Point(26, 59);
             this.Name_port.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Name_port.Name = "Name_port";
-            this.Name_port.Size = new System.Drawing.Size(50, 25);
+            this.Name_port.Size = new System.Drawing.Size(71, 37);
             this.Name_port.TabIndex = 1;
             this.Name_port.Text = "Port:";
             // 
@@ -72,7 +73,7 @@
             this.tb_input_port.Location = new System.Drawing.Point(5, 15);
             this.tb_input_port.Margin = new System.Windows.Forms.Padding(4);
             this.tb_input_port.Name = "tb_input_port";
-            this.tb_input_port.Size = new System.Drawing.Size(484, 25);
+            this.tb_input_port.Size = new System.Drawing.Size(484, 35);
             this.tb_input_port.TabIndex = 2;
             // 
             // panel1
@@ -86,6 +87,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btn_stop);
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.Name_port);
             this.panel2.Controls.Add(this.button1);
@@ -94,36 +96,47 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1412, 139);
             this.panel2.TabIndex = 4;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // panel_draw
             // 
             this.panel_draw.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel_draw.Controls.Add(this.richTextBox1);
+            this.panel_draw.Controls.Add(this.rtb_content);
             this.panel_draw.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_draw.Location = new System.Drawing.Point(0, 139);
             this.panel_draw.Name = "panel_draw";
             this.panel_draw.Size = new System.Drawing.Size(1412, 770);
             this.panel_draw.TabIndex = 5;
             // 
-            // richTextBox1
+            // rtb_content
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(98, 21);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(975, 334);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.rtb_content.Location = new System.Drawing.Point(98, 21);
+            this.rtb_content.Name = "rtb_content";
+            this.rtb_content.Size = new System.Drawing.Size(1252, 697);
+            this.rtb_content.TabIndex = 0;
+            this.rtb_content.Text = "";
+            this.rtb_content.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
-            // Server
+            // btn_stop
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.btn_stop.Location = new System.Drawing.Point(1040, 40);
+            this.btn_stop.Name = "btn_stop";
+            this.btn_stop.Size = new System.Drawing.Size(182, 59);
+            this.btn_stop.TabIndex = 4;
+            this.btn_stop.Text = "Stop";
+            this.btn_stop.UseVisualStyleBackColor = true;
+            this.btn_stop.Click += new System.EventHandler(this.btn_stop_Click);
+            // 
+            // QuanLyServer
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1412, 909);
             this.Controls.Add(this.panel_draw);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Segoe UI", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Server";
+            this.Name = "QuanLyServer";
             this.Text = "Server";
             this.Load += new System.EventHandler(this.Server_Load);
             this.panel1.ResumeLayout(false);
@@ -143,7 +156,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel_draw;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox rtb_content;
+        private System.Windows.Forms.Button btn_stop;
     }
 }
 
