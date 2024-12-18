@@ -34,7 +34,7 @@ namespace ServerDrawHub.Model
         }
 
         // Gửi tin nhắn đến tất cả các client trong phòng
-        public async Task BroadcastMessageAsync(string message)
+        public async Task BroadcastMessageAsync(string message, Socket senderSocket)
         {
             byte[] data = Encoding.ASCII.GetBytes(message);
 
@@ -42,7 +42,7 @@ namespace ServerDrawHub.Model
             {
                 try
                 {
-                    if (client.Connected)
+                    if (client.Connected && client != senderSocket)
                     {
                         await client.SendAsync(new ArraySegment<byte>(data), SocketFlags.None);
                     }

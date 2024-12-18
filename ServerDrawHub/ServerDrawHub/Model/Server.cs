@@ -28,6 +28,13 @@ namespace ServerDrawHub.Model
             
         }
 
+        public Server()
+        {
+            
+            rooms = new Dictionary<string, Room>();
+
+        }
+
 
 
         // Khởi động server
@@ -96,7 +103,7 @@ namespace ServerDrawHub.Model
                     // Chỉ phát tin nhắn tới phòng mà client thuộc về
                     if (rooms.ContainsKey(clientHandler.RoomIdCurrent))
                     {
-                        rooms[clientHandler.RoomIdCurrent].BroadcastMessageAsync(message);
+                        rooms[clientHandler.RoomIdCurrent].BroadcastMessageAsync(message, clientHandler.ClientSocket);
                     }
                 }
                 
@@ -122,11 +129,11 @@ namespace ServerDrawHub.Model
        
         
 
-        public async Task BroadcastMessageToRoomAsync(string roomId, string message)
+        public async Task BroadcastMessageToRoomAsync(string roomId, string message, Socket socketSender)
         {
             if (rooms.ContainsKey(roomId))
             {
-                await rooms[roomId].BroadcastMessageAsync(message);
+                await rooms[roomId].BroadcastMessageAsync(message, socketSender);
             }
         }
 

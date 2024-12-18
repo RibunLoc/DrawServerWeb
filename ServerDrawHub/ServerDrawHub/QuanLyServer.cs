@@ -20,7 +20,7 @@ namespace ServerDrawHub
         public QuanLyServer()
         {
             InitializeComponent();
-            server = new Server(BroadcastMessageAsync);
+            server = new Server();
             server.MessageReceived += Server_MessageReceived;
             server.ClientDisconnected += Server_ClientDisconnected;
             server.CreatedRoom += UpdateMesseage;
@@ -78,13 +78,13 @@ namespace ServerDrawHub
             
         }
 
-        private async Task BroadcastMessageAsync(string message)
-        {
-            foreach(var room in server.rooms.Values)
-            {
-               await room.BroadcastMessageAsync(message);
-            }    
-        }
+        //private async Task BroadcastMessageAsync(string message, Socket senderSocket)
+        //{
+        //    foreach(var room in server.rooms.Values)
+        //    {
+        //       await room.BroadcastMessageAsync(message, senderSocket);
+        //    }    
+        //}
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
