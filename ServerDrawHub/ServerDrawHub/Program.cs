@@ -19,7 +19,7 @@ namespace ServerDrawHub
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Server());
+            Application.Run(new QuanLyServer());
         }
         [System.Runtime.InteropServices.DllImport("user32.dll")]
 
