@@ -53,10 +53,8 @@ namespace ServerDrawHub.Model
                     string message = Encoding.ASCII.GetString(buffer, 0, byteReceived);
 
 
-                   MessageReceived?.Invoke(this, new MessageReceivedEventArgs(message));
-               
-
-                    await broadcastMessage(message);
+                     MessageReceived?.Invoke(this, new MessageReceivedEventArgs(message));
+              
                 }
 
 

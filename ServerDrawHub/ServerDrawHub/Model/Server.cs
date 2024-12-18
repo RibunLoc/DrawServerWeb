@@ -91,15 +91,15 @@ namespace ServerDrawHub.Model
                     // Gọi phương thức CreateRoom để xử lý yêu cầu tạo phòng
                     CreateRoom(clientHandler, roomId);
                 }
-                else
+                else 
                 {
-                    
-                    //truyền tin nhắn đến các phòng tương ứng
-                    foreach (var room in rooms.Values)
+                    // Chỉ phát tin nhắn tới phòng mà client thuộc về
+                    if (rooms.ContainsKey(clientHandler.RoomIdCurrent))
                     {
-                        room.BroadcastMessageAsync(e.message);
+                        rooms[clientHandler.RoomIdCurrent].BroadcastMessageAsync(message);
                     }
                 }
+                
             }
            
         }
@@ -109,52 +109,37 @@ namespace ServerDrawHub.Model
            
         }
 
-        public void CreateRoom(ClientHandler clientHandler ,string RoomId)
+        public void CreateRoom(ClientHandler clientHandler, string roomId)
         {
-            if (!rooms.ContainsKey(RoomId))
+            if (!rooms.ContainsKey(roomId))
             {
-                rooms[RoomId] = new Room(RoomId);
-                // Nếu phòng chưa tồn tại, tạo mới phòng và thêm client vào phòng
-                
-                clientHandler.RoomIdCurrent = RoomId;
-                rooms[RoomId].AddClient(clientHandler.ClientSocket);
-
-                //// Thông báo client đã tạo phòng thành công
-                //string successMessage = $"Room {RoomId} created successfully!";
-                //SendMessageToClient(clientHandler, successMessage);
-                CreatedRoom?.Invoke($"Room {RoomId} created successfully!");
-
+                rooms[roomId] = new Room(roomId);
+                CreatedRoom?.Invoke($"Room {roomId} created successfully!");
             }
-            else
-            {
-                JoinRoom(RoomId, clientHandler.ClientSocket);
-            } 
-                
+
+            JoinRoom(roomId, clientHandler);
         }
+       
+        
 
-
-
-
-        // Phương thức này sẽ gửi tin nhắn đến tất cả các phòng trong server
-        private async Task BroadcastMessageAsync(string message)
+        public async Task BroadcastMessageToRoomAsync(string roomId, string message)
         {
-            foreach (var room in rooms.Values)
+            if (rooms.ContainsKey(roomId))
             {
-                // Gửi tin nhắn đến tất cả các client trong mỗi phòng
-                await room.BroadcastMessageAsync(message);
+                await rooms[roomId].BroadcastMessageAsync(message);
             }
         }
 
 
-
-
-        public void JoinRoom(string RooomId, Socket clientsocket)
+        public void JoinRoom(string roomId, ClientHandler clientHandler)
         {
-            if (rooms.ContainsKey(RooomId))
+            if (rooms.ContainsKey(roomId))
             {
-                rooms[RooomId].AddClient(clientsocket);
+                rooms[roomId].AddClient(clientHandler.ClientSocket);
+                clientHandler.RoomIdCurrent = roomId; // Cập nhật phòng hiện tại cho client
             }
         }
+
 
         public void LeaveRoom(string RoomId, Socket clientsocket)
         {
