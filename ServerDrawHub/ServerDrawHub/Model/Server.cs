@@ -93,10 +93,26 @@ namespace ServerDrawHub.Model
                 {
                     // Lấy RoomId từ tin nhắn
                     string roomId = message.Split(':')[1].Trim();
+                    string name = message.Split(':')[2].Trim();
                     
 
                     // Gọi phương thức CreateRoom để xử lý yêu cầu tạo phòng
                     CreateRoom(clientHandler, roomId);
+                    // Thông báo lại tới người dùng khác trong phòng
+                    string msg = $"chat: {name} đã tham gia phòng vẽ \n"; //cú pháp: lenh:noidung \n
+                    if (rooms.ContainsKey(clientHandler.RoomIdCurrent))
+                    {
+                        rooms[clientHandler.RoomIdCurrent].BroadcastMessageAsync(msg, clientHandler.ClientSocket);
+                    }    
+                }
+                else if (message.StartsWith("EXIT"))
+                {
+                    string username = message.Split(':')[1].Trim();
+                    // đóng kết nối và xóa người dùng
+                    if(rooms.ContainsKey(clientHandler.RoomIdCurrent))
+                    {
+                        rooms[clientHandler.RoomIdCurrent].RemoveClientOutOfRoom(clientHandler.ClientSocket, username);
+                    }
                 }
                 else 
                 {
@@ -123,8 +139,9 @@ namespace ServerDrawHub.Model
                 rooms[roomId] = new Room(roomId);
                 CreatedRoom?.Invoke($"Room {roomId} created successfully!");
             }
-
             JoinRoom(roomId, clientHandler);
+
+
         }
        
         
@@ -145,6 +162,9 @@ namespace ServerDrawHub.Model
                 rooms[roomId].AddClient(clientHandler.ClientSocket);
                 clientHandler.RoomIdCurrent = roomId; // Cập nhật phòng hiện tại cho client
             }
+
+
+
         }
 
 

@@ -50,7 +50,7 @@ namespace ServerDrawHub.Model
                         break;
                     }
 
-                    string message = Encoding.ASCII.GetString(buffer, 0, byteReceived);
+                    string message = Encoding.UTF8.GetString(buffer, 0, byteReceived);
 
 
                      MessageReceived?.Invoke(this, new MessageReceivedEventArgs(message));

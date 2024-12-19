@@ -11,7 +11,7 @@ namespace ServerDrawHub.Model
     {
         public string RoomId { get; set; }
         public List<Socket> clients;  // Danh sách các client trong phòng
-
+        private readonly object clientLock = new object();
         public Room(string roomId)
         {
             RoomId = roomId;
@@ -36,13 +36,13 @@ namespace ServerDrawHub.Model
         // Gửi tin nhắn đến tất cả các client trong phòng
         public async Task BroadcastMessageAsync(string message, Socket senderSocket)
         {
-            byte[] data = Encoding.ASCII.GetBytes(message);
+            byte[] data = Encoding.UTF8.GetBytes(message);
 
             foreach (var client in clients)
             {
                 try
                 {
-                    if (client.Connected && client != senderSocket)
+                    if (client.Connected && client != senderSocket && senderSocket != null)
                     {
                         await client.SendAsync(new ArraySegment<byte>(data), SocketFlags.None);
                     }
@@ -52,6 +52,23 @@ namespace ServerDrawHub.Model
                     Console.WriteLine($"Failed to send message to client in room {RoomId}: {ex.Message}");
                 }
             }
+        }
+
+        public async Task RemoveClientOutOfRoom(Socket senderSocket, string username)
+        {
+          
+            string ThongBaoToiClientKhac = $"chat:{username}:Đã thoát khỏi phòng!\n";
+
+           await BroadcastMessageAsync(ThongBaoToiClientKhac, senderSocket);
+
+            lock (clientLock)
+            {
+                //Xoa nguoi dung
+                clients.Remove(senderSocket);
+
+            }    
+           
+
         }
 
         // Lấy danh sách các client trong phòng
