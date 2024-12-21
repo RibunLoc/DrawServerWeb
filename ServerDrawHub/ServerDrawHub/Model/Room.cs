@@ -57,7 +57,7 @@ namespace ServerDrawHub.Model
         public async Task RemoveClientOutOfRoom(Socket senderSocket, string username)
         {
           
-            string ThongBaoToiClientKhac = $"chat:{username}:Đã thoát khỏi phòng!\n";
+            string ThongBaoToiClientKhac = $"chat:{username} Đã thoát khỏi phòng!\n";
 
            await BroadcastMessageAsync(ThongBaoToiClientKhac, senderSocket);
 

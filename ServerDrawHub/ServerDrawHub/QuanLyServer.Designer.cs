@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyServer));
             this.button1 = new System.Windows.Forms.Button();
             this.Name_port = new System.Windows.Forms.Label();
             this.tb_input_port = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_stop = new System.Windows.Forms.Button();
             this.panel_draw = new System.Windows.Forms.Panel();
             this.rtb_content = new System.Windows.Forms.RichTextBox();
-            this.btn_stop = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel_draw.SuspendLayout();
@@ -98,6 +99,16 @@
             this.panel2.TabIndex = 4;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
+            // btn_stop
+            // 
+            this.btn_stop.Location = new System.Drawing.Point(1040, 40);
+            this.btn_stop.Name = "btn_stop";
+            this.btn_stop.Size = new System.Drawing.Size(182, 59);
+            this.btn_stop.TabIndex = 4;
+            this.btn_stop.Text = "Stop";
+            this.btn_stop.UseVisualStyleBackColor = true;
+            this.btn_stop.Click += new System.EventHandler(this.btn_stop_Click);
+            // 
             // panel_draw
             // 
             this.panel_draw.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -117,16 +128,6 @@
             this.rtb_content.Text = "";
             this.rtb_content.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
-            // btn_stop
-            // 
-            this.btn_stop.Location = new System.Drawing.Point(1040, 40);
-            this.btn_stop.Name = "btn_stop";
-            this.btn_stop.Size = new System.Drawing.Size(182, 59);
-            this.btn_stop.TabIndex = 4;
-            this.btn_stop.Text = "Stop";
-            this.btn_stop.UseVisualStyleBackColor = true;
-            this.btn_stop.Click += new System.EventHandler(this.btn_stop_Click);
-            // 
             // QuanLyServer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
@@ -135,6 +136,7 @@
             this.Controls.Add(this.panel_draw);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Segoe UI", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "QuanLyServer";
             this.Text = "Server";
