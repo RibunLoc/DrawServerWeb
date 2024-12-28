@@ -80,7 +80,7 @@ namespace ServerDrawHub.Model
         }
 
         //xử lý khi có tin nhắn mới 
-        private void ClientHandler_MessageReceived(object sender, MessageReceivedEventArgs e)
+        private async void ClientHandler_MessageReceived(object sender, MessageReceivedEventArgs e)
         {
 
             var clientHandler = sender as ClientHandler;
@@ -104,6 +104,20 @@ namespace ServerDrawHub.Model
                     {
                         rooms[clientHandler.RoomIdCurrent].BroadcastMessageAsync(msg, clientHandler.ClientSocket);
                     }    
+                }
+                else if (message.StartsWith("DRAW:"))
+                {
+                    // Xử lý lệnh vẽ
+                    if (rooms.ContainsKey(clientHandler.RoomIdCurrent))
+                    {
+                        var room = rooms[clientHandler.RoomIdCurrent];
+
+                        // Lưu lệnh vẽ vào phòng
+                        room.AddDrawingData(message);
+
+                        // Phát tin nhắn tới tất cả các client khác trong phòng
+                        await room.BroadcastMessageAsync(message, clientHandler.ClientSocket);
+                    }
                 }
                 else if (message.StartsWith("EXIT"))
                 {
@@ -159,8 +173,12 @@ namespace ServerDrawHub.Model
         {
             if (rooms.ContainsKey(roomId))
             {
-                rooms[roomId].AddClient(clientHandler.ClientSocket);
+                Room room = rooms[roomId];
+                room.AddClient(clientHandler.ClientSocket);
                 clientHandler.RoomIdCurrent = roomId; // Cập nhật phòng hiện tại cho client
+
+                // Gửi trạng thái bản vẽ hiện tại cho client mới
+                Task.Run(async () => await room.SendExistingDrawingDataAsync(clientHandler.ClientSocket));
             }
 
 
@@ -172,6 +190,11 @@ namespace ServerDrawHub.Model
         {
             if (rooms.ContainsKey(RoomId))
                 rooms[RoomId].RemoveClient(clientsocket);
+
+            if (rooms[RoomId].GetClients().Count == 0)
+            {
+                rooms.Remove(RoomId); // Xóa phòng khỏi danh sách nếu không còn client
+            }
         }
 
         // Dừng server

@@ -49,3 +49,13 @@ D:\Document\Winform\Server_Online_collaborative_drawing_application\DrawServerWe
 D:\Document\Winform\Server_Online_collaborative_drawing_application\DrawServerWeb\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.csproj.CoreCompileInputs.cache
 D:\Document\Winform\Server_Online_collaborative_drawing_application\DrawServerWeb\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.exe
 D:\Document\Winform\Server_Online_collaborative_drawing_application\DrawServerWeb\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.pdb
+C:\Users\asus\Downloads\DrawServerWeb-main\DrawServerWeb-main\ServerDrawHub\ServerDrawHub\bin\Debug\ServerDrawHub.exe.config
+C:\Users\asus\Downloads\DrawServerWeb-main\DrawServerWeb-main\ServerDrawHub\ServerDrawHub\bin\Debug\ServerDrawHub.exe
+C:\Users\asus\Downloads\DrawServerWeb-main\DrawServerWeb-main\ServerDrawHub\ServerDrawHub\bin\Debug\ServerDrawHub.pdb
+C:\Users\asus\Downloads\DrawServerWeb-main\DrawServerWeb-main\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.csproj.AssemblyReference.cache
+C:\Users\asus\Downloads\DrawServerWeb-main\DrawServerWeb-main\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.Properties.Resources.resources
+C:\Users\asus\Downloads\DrawServerWeb-main\DrawServerWeb-main\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.QuanLyServer.resources
+C:\Users\asus\Downloads\DrawServerWeb-main\DrawServerWeb-main\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.csproj.GenerateResource.cache
+C:\Users\asus\Downloads\DrawServerWeb-main\DrawServerWeb-main\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.csproj.CoreCompileInputs.cache
+C:\Users\asus\Downloads\DrawServerWeb-main\DrawServerWeb-main\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.exe
+C:\Users\asus\Downloads\DrawServerWeb-main\DrawServerWeb-main\ServerDrawHub\ServerDrawHub\obj\Debug\ServerDrawHub.pdb
