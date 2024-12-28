@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "C:\\Users\\asus\\Downloads\\DrawServerWeb-main\\DrawServerWeb-main\\ServerDrawHub\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4D163D44-6C96-49CF-B6E2-FBB593A7781D}|ServerDrawHub\\ServerDrawHub.csproj|c:\\users\\asus\\downloads\\drawserverweb-main\\drawserverweb-main\\serverdrawhub\\serverdrawhub\\model\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4D163D44-6C96-49CF-B6E2-FBB593A7781D}|ServerDrawHub\\ServerDrawHub.csproj|C:\\Users\\asus\\Downloads\\DrawServerWeb-main\\DrawServerWeb-main\\ServerDrawHub\\serverdrawhub\\model\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4D163D44-6C96-49CF-B6E2-FBB593A7781D}|ServerDrawHub\\ServerDrawHub.csproj|solutionrelative:serverdrawhub\\model\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4D163D44-6C96-49CF-B6E2-FBB593A7781D}|ServerDrawHub\\ServerDrawHub.csproj|C:\\Users\\asus\\Downloads\\DrawServerWeb-main\\DrawServerWeb-main\\ServerDrawHub\\serverdrawhub\\model\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4D163D44-6C96-49CF-B6E2-FBB593A7781D}|ServerDrawHub\\ServerDrawHub.csproj|c:\\users\\asus\\downloads\\drawserverweb-main\\drawserverweb-main\\serverdrawhub\\serverdrawhub\\model\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4D163D44-6C96-49CF-B6E2-FBB593A7781D}|ServerDrawHub\\ServerDrawHub.csproj|solutionrelative:serverdrawhub\\model\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -34,7 +34,8 @@
               "RelativeToolTip": "ServerDrawHub\\Model\\ClientHandler.cs",
               "ViewState": "AgIAADYAAAAAAAAAAAAYwAoAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-28T09:36:27.155Z"
+              "WhenOpened": "2024-12-28T09:36:27.155Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -44,7 +45,7 @@
               "RelativeDocumentMoniker": "ServerDrawHub\\Model\\Server.cs",
               "ToolTip": "C:\\Users\\asus\\Downloads\\DrawServerWeb-main\\DrawServerWeb-main\\ServerDrawHub\\ServerDrawHub\\Model\\Server.cs",
               "RelativeToolTip": "ServerDrawHub\\Model\\Server.cs",
-              "ViewState": "AgIAAJcAAAAAAAAAAADwv9gAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAqwNgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-28T09:30:25.045Z",
               "EditorCaption": ""
@@ -57,7 +58,7 @@
               "RelativeDocumentMoniker": "ServerDrawHub\\Model\\Room.cs",
               "ToolTip": "C:\\Users\\asus\\Downloads\\DrawServerWeb-main\\DrawServerWeb-main\\ServerDrawHub\\ServerDrawHub\\Model\\Room.cs",
               "RelativeToolTip": "ServerDrawHub\\Model\\Room.cs",
-              "ViewState": "AgIAAFYAAAAAAAAAAAAswE0AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAADwv00AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-28T09:28:43.756Z",
               "EditorCaption": ""
